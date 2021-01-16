@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webService/" targetNamespace="http://webService/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ConversionEuro-TND" type="tns:ConversionEuro-TND" />
+  <xs:element name="ConversionEuro-TNDResponse" type="tns:ConversionEuro-TNDResponse" />
+  <xs:element name="account" type="tns:account" />
+  <xs:element name="accountList" type="tns:accountList" />
+  <xs:element name="accountListResponse" type="tns:accountListResponse" />
+  <xs:element name="getAccount" type="tns:getAccount" />
+  <xs:element name="getAccountResponse" type="tns:getAccountResponse" />
+  <xs:complexType name="ConversionEuro-TND">
+    <xs:sequence>
+      <xs:element name="montant" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConversionEuro-TNDResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccount">
+    <xs:sequence>
+      <xs:element name="accountNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:account" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="account">
+    <xs:sequence>
+      <xs:element name="accountNbr" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute name="sold" type="xs:double" use="required" />
+  </xs:complexType>
+  <xs:complexType name="accountList">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="accountListResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:account" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
